@@ -1306,7 +1306,14 @@ bool CheckOptionsBus(ProgramOptions& opt) {
         busopt.umi.push_back(BUSOptionSubstr(0,16,26)); // first file [16:26]
         busopt.bc.push_back(BUSOptionSubstr(0,0,16));
         strand = ProgramOptions::StrandType::FR;
-      } else if (opt.technology == "10XV3") {
+      } else if (opt.technology == "HANI_ASSAY") {
+        busopt.nfiles = 3;
+        busopt.bc.push_back(BUSOptionSubstr(0,9,20)); // Replace X with length of barcode
+        busopt.bc.push_back(BUSOptionSubstr(1,14,30)); // Replace X with length of barcode
+        busopt.umi.push_back(BUSOptionSubstr(0,0,8)); // Second file, Xth start, read X+8 index
+        busopt.seq.push_back(BUSOptionSubstr(2,0,0)); // Third file, 0th start, read till end
+        strand = ProgramOptions::StrandType::FR; // optionally, specify the strandedness
+      }else if (opt.technology == "10XV3") {
         busopt.nfiles = 2;
         busopt.seq.push_back(BUSOptionSubstr(1,0,0));
         busopt.umi.push_back(BUSOptionSubstr(0,16,28));
