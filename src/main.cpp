@@ -1309,7 +1309,7 @@ bool CheckOptionsBus(ProgramOptions& opt) {
       } else if (opt.technology == "HANI_ASSAY") {
         busopt.nfiles = 3;
         busopt.bc.push_back(BUSOptionSubstr(0,9,20)); // Replace X with length of barcode
-        busopt.bc.push_back(BUSOptionSubstr(1,14,30)); // Replace X with length of barcode
+        busopt.bc.push_back(BUSOptionSubstr(1,14,29)); // Replace X with length of barcode
         busopt.umi.push_back(BUSOptionSubstr(0,0,8)); // Second file, Xth start, read X+8 index
         busopt.seq.push_back(BUSOptionSubstr(2,0,0)); // Third file, 0th start, read till end
         strand = ProgramOptions::StrandType::FR; // optionally, specify the strandedness
